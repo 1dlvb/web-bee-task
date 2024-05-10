@@ -11,17 +11,6 @@ public class Day {
         this.numberOfADay = numberOfADay;
     }
     public Day(){}
-//    public boolean isWeekendDay() {
-//        return isWeekendDay;
-//    }
-//
-//    public void setWeekendDay(boolean weekendDay) {
-//        isWeekendDay = weekendDay;
-//    }
-//
-//    public int getNumberOfADay() {
-//        return numberOfADay;
-//    }
 
     public void setNumberOfADay(int numberOfADay) {
         this.numberOfADay = numberOfADay;
@@ -39,4 +28,5 @@ public class Day {
     public int hashCode() {
         return Objects.hash(isWeekendDay, numberOfADay);
     }
+
 }
