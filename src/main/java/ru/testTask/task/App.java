@@ -3,14 +3,6 @@ package ru.testTask.task;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
-/**
- * Variables should be specified in work-calendar.properties
- * weekendDays=
- * shortenedDays=
- * start.time.of.the.working.day=
- * end.time.of.the.working.day=
- *
- **/
 
 public class App
 {

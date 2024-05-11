@@ -8,6 +8,14 @@ import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Variables should be specified in work-calendar.properties
+ * weekendDays=
+ * shortenedDays=
+ * start.time.of.the.working.day=
+ * end.time.of.the.working.day=
+ *
+ **/
 public class CalendarChecker {
     private final Month month;
 
