@@ -71,4 +71,31 @@ public class CalendarCheckerTest {
         // is not weekend
         Assertions.assertFalse(checker.checkIfDateIsWeekend("08.05.2024"));
     }
+    @Test
+    public void wrongDateFormatInCheckIfDateIsWeekend()
+    {
+        Assertions.assertThrows( IllegalArgumentException.class, () -> checker.checkIfDateIsWeekend("08/05.2024"));
+    }
+    @Test
+    public void wrongDateFormatInCheckIfDateTimeAreNotWorking()
+    {
+        Assertions.assertThrows( IllegalArgumentException.class, () ->
+                checker.checkIfDateTimeAreNotWorking("08/05.2024", "17:39"));
+    }
+    @Test
+    public void wrongTimeFormat()
+    {
+        Assertions.assertThrows( IllegalArgumentException.class, () ->
+                checker.checkIfDateTimeAreNotWorking("08.05.2024", "17.39"));
+    }
+    @Test
+    public void negativeDate()
+    {
+        Assertions.assertThrows( IllegalArgumentException.class, () -> checker.checkIfDateIsWeekend("-08.05.2024"));
+    }
+    @Test
+    public void negativeTime()
+    {
+        Assertions.assertThrows( IllegalArgumentException.class, () ->
+                checker.checkIfDateTimeAreNotWorking("08.05.2024", "-17:39"));    }
 }
