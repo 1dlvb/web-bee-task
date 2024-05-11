@@ -1,6 +1,10 @@
 package ru.testTask.task;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +21,13 @@ public class CalendarChecker {
         Pattern pattern = Pattern.compile(datePatternRegex);
         Matcher matcher = pattern.matcher(date);
         if(!matcher.matches())
-            throw new IllegalArgumentException("Invalid date format. Date must be in the format dd-MM-yyyy");
+            throw new IllegalArgumentException("Invalid date format. Date must be in the format dd.MM.yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        try {
+            dateFormat.parse(date);
+        } catch (DateTimeParseException | ParseException e) {
+            throw new IllegalArgumentException("Invalid date format. Date must be in the format dd.MM.yyyy");
+        }
     }
 
     private void validateTime(String time) throws IllegalArgumentException {
@@ -28,11 +38,11 @@ public class CalendarChecker {
     }
 
     private String decrementTimeForShortenedDays(String time){
-          int hour = Integer.parseInt(time.substring(0, 2))-1;
-          if(hour <= 0) time = String.format("%s%s%s", 0, 0, time.substring(2, 5));
-          else if(hour < 10) time = String.format("%s%s%s", 0, Integer.parseInt(time.substring(0, 2))-1, time.substring(2, 5));
-          else time = String.format("%s%s", Integer.parseInt(time.substring(0, 2))-1, time.substring(2, 5));
-          return time;
+        int hour = Integer.parseInt(time.substring(0, 2))-1;
+        if(hour <= 0) time = String.format("%s%s%s", 0, 0, time.substring(2, 5));
+        else if(hour < 10) time = String.format("%s%s%s", 0, Integer.parseInt(time.substring(0, 2))-1, time.substring(2, 5));
+        else time = String.format("%s%s", Integer.parseInt(time.substring(0, 2))-1, time.substring(2, 5));
+        return time;
     }
 
     private boolean timeComparator(String time1, String time2){
